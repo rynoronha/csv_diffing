@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Django = "~=2.2"
+gunicorn = "==19.9.0"
+scikit-learn = "*"
+pandas = "*"
+requests = "*"
+matplotlib = "*"
+
+
+[dev-packages]
+pytest-django = "*"
+pytest-mock = "*"
+
+[requires]
+python_version = "3.8"
