@@ -83,6 +83,7 @@ There are a few rules that we would like you to follow during your code challeng
   - Make sure the diffing is fast without using too much resources, please include in your readme information on how long it takes to diff and approximately how much memory it uses.
   - Feel free to do the diffing manually in pure CSV or with pandas, thou watch out for pandas memory consumption.
   - The Django template comes with a Job model and a sqlite DB, don't waste to much time on DB handling stuff, thou feel free to edit the model as it suits you. 
+  - The project uses pipenv for declaring Python dependencies and is set to use Python 3.8 and Django 2.2, you can setup your environment using `pipenv --python 3.8 shell` and then `pipenv install -d`
 
 
 Your submission should also include a readme file, where you can document your work, describe the features and the architectural decisions that you made. Feel free to share there your thoughts about the challenges that you faced implementing this code. Please include any specific instructions that we might need to test your solution.
