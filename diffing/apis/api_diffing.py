@@ -4,7 +4,7 @@ from diffing.tasks import run_diff
 
 
 def new_job(request, metric_id):
-    run_diff(metric_id)
+    run_diff.delay(metric_id)
 
     job = Job.objects.create(metric=metric_id)
     return JsonResponse({"job_id": job.pk, "metric_id": metric_id})
