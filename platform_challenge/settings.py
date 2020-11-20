@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth',
     'django.contrib.contenttypes', 'django.contrib.sessions',
-    'django.contrib.messages', 'django.contrib.staticfiles', 'diffing'
+    'django.contrib.messages', 'django.contrib.staticfiles', 'diffing',
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,6 @@ CELERY_BROKER_URL = 'redis://:p0528279dd9768cbf7598485625fbf505b4fa5dc009b749487
 
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_CACHE_BACKEND = 'django-cache'

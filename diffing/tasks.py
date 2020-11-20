@@ -1,5 +1,7 @@
 from celery import shared_task
 from django.http import JsonResponse
+from .models import Job
+import os
 
 import pandas as pd
 import numpy as np
@@ -7,7 +9,7 @@ import math
 
 
 @shared_task
-def run_diff(metric_id):
+def run_diff(metric_id, job_id):
     if metric_id == 'revenue':
         unique_fields = ['date', 'segment_field', 'segment_value_id', 'stat']
     elif metric_id == 'c_revenue':
@@ -39,4 +41,13 @@ def run_diff(metric_id):
 
     diff_df = merged_df[merged_df['value_change'] != 0.0]
 
-    diff_df.to_csv(f'{metric_id}-test.csv')
+    file_name = f'{metric_id}_diff_{job_id}.csv'
+    dirname = os.path.dirname(__file__)
+
+    diff_df.to_csv(os.path.join(dirname, f'diffed_files/{file_name}'))
+
+    # update job in db
+    job = Job.objects.get(pk=int(job_id))
+    job.ready = True
+    job.file_name = file_name
+    job.save()
