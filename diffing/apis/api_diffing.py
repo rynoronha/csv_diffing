@@ -13,6 +13,9 @@ def get_job(request, job_id):
     # TODO: Add your logic here for retrieving a job if is ready
     try:
         job = Job.objects.get(pk=int(job_id))
-        return JsonResponse({"job_id": job_id, "metric_id": job.metric})
+        if job.ready:
+            return JsonResponse({"job_id": job_id, "metric_id": job.metric})
+        else:
+            return JsonResponse({"job_id": job_id, "status": "processing"})
     except Job.DoesNotExist:
         return JsonResponse({"job_id": None})
