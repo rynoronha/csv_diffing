@@ -13,7 +13,6 @@ def new_job(request, metric_id):
 
 
 def get_job(request, job_id):
-    # TODO: Add your logic here for retrieving a job if is ready
     try:
         job = Job.objects.get(pk=int(job_id))
         if job.ready:
