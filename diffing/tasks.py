@@ -2,7 +2,6 @@ from celery import shared_task
 from django.http import JsonResponse
 from .models import Job
 import os
-
 import pandas as pd
 import numpy as np
 import math
